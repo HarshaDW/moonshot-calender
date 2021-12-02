@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useAppSelector } from '../../redux/hooks';
 import { selectUpcoming } from '../../redux/upcoming/upcomingSlice';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, { Source, Layer } from 'react-map-gl';
 
 const Upcoming = (props) => {
   const [viewport, setViewport] = useState({
@@ -14,6 +14,17 @@ const Upcoming = (props) => {
     longitude: -122.4376,
     zoom: 8,
   });
+  // Maybe build an array as follows with the results
+  const geojson = {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: [-122.4, 37.8] },
+      },
+    ],
+  };
+
   const upcomingList = useAppSelector(selectUpcoming);
   console.log(upcomingList);
   // TODO Loop through results and map coordinates/labels to Map

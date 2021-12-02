@@ -5,8 +5,6 @@ import { Upcoming } from '../../types/Upcoming';
 
 export interface SearchState {
   search: {
-    start: string;
-    end: string;
     launches: any;
   };
   loading: boolean;
@@ -14,8 +12,6 @@ export interface SearchState {
 
 const initialState: SearchState = {
   search: {
-    start: '',
-    end: '',
     launches: [],
   },
   loading: false,
@@ -23,8 +19,17 @@ const initialState: SearchState = {
 
 export const searchByDateRange = createAsyncThunk(
   'search/searchLaunches',
-  async ({ search }: { search: string }) => {
+  async ({
+    startDate,
+    endDate,
+    search,
+  }: {
+    startDate: string;
+    endDate: string;
+    search: string;
+  }) => {
     const api = new ApiInstance();
+    console.log('startDate', startDate, 'endDate', endDate);
     const response = await api.searchByDateRange(
       `launch/upcoming/?search=${search}`
     );
@@ -35,28 +40,7 @@ export const searchByDateRange = createAsyncThunk(
 export const searchSlice = createSlice({
   name: 'searchList',
   initialState,
-  reducers: {
-    setStartDate: (state, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        state: {
-          search: {
-            start: action.payload,
-          },
-        },
-      };
-    },
-    setEndDate: (state, action: PayloadAction<string>) => {
-      return {
-        ...state,
-        state: {
-          search: {
-            end: action.payload,
-          },
-        },
-      };
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(searchByDateRange.pending, (state, action) => {
       state.loading = true;
@@ -68,8 +52,6 @@ export const searchSlice = createSlice({
     });
   },
 });
-
-export const { setStartDate, setEndDate } = searchSlice.actions;
 
 export const selectLaunches = (state: RootState) => state.search;
 
