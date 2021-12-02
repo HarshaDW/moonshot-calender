@@ -7,8 +7,6 @@ import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import {
   selectLaunches,
   searchByDateRange,
-  setStartDate,
-  setEndDate,
 } from '../../redux/searchByDate/searchSlice';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
@@ -16,23 +14,27 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
 const SearchByDate = () => {
-   // TODO: Find the API that accepts dateRange and pass the values
+  const [startDate, setStartDateState] = useState('');
+  const [endDate, setEndDateState] = useState('');
+  // TODO: Find the API that accepts dateRange and pass the values
   const launches = useAppSelector(selectLaunches);
   const dispatch = useAppDispatch();
 
   const handleStartDatChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
-    dispatch(setStartDate(e.target.value.toString()));
+    setStartDateState(e.target.value.toString());
   };
   const handleEndDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
-    dispatch(setEndDate(e.target.value.toString()));
+    setEndDateState(e.target.value.toString());
   };
 
   const handleSearch = () => {
     dispatch(
       searchByDateRange({
         // TODO: Find the API that accepts dateRange and pass the values
+        startDate: startDate,
+        endDate: endDate,
         search: 'SpaceX',
       })
     );
@@ -58,6 +60,7 @@ const SearchByDate = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          value={startDate}
           onChange={handleStartDatChange}
         />
         <TextField
@@ -69,6 +72,7 @@ const SearchByDate = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          value={endDate}
           onChange={handleEndDateChange}
         />
         <Button

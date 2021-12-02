@@ -27,7 +27,7 @@ export const upcomingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUpcomingLaunches.fulfilled, (state, action) => {
-      state.upcoming.push(action.payload);
+      state.upcoming.splice(0, state.upcoming.length, action.payload);
     });
   },
 });
