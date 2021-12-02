@@ -16,6 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
 const SearchByDate = () => {
+   // TODO: Find the API that accepts dateRange and pass the values
   const launches = useAppSelector(selectLaunches);
   const dispatch = useAppDispatch();
 
@@ -27,10 +28,11 @@ const SearchByDate = () => {
     console.log(e.target.value);
     dispatch(setEndDate(e.target.value.toString()));
   };
-  console.log('launches', launches.search.launches);
+
   const handleSearch = () => {
     dispatch(
       searchByDateRange({
+        // TODO: Find the API that accepts dateRange and pass the values
         search: 'SpaceX',
       })
     );

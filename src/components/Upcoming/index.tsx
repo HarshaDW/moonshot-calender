@@ -16,6 +16,7 @@ const Upcoming = (props) => {
   });
   const upcomingList = useAppSelector(selectUpcoming);
   console.log(upcomingList);
+  // TODO Loop through results and map coordinates/labels to Map
   return (
     <>
       <Typography
