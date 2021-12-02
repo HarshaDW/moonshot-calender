@@ -1,40 +1,37 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { UpcomingApi } from '../../api/UpcomingAPI'
-import { RootState } from '../store'
-import { Upcoming } from '../../types/Upcoming'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { UpcomingApi } from '../../api/UpcomingAPI';
+import { RootState } from '../store';
+import { Upcoming } from '../../types/Upcoming';
 
 export interface UpcomingState {
-    upcoming: Array<Upcoming>
+  upcoming: Array<Upcoming>;
 }
 
 const initialState: UpcomingState = {
-    upcoming: [],
-  }
-
+  upcoming: [],
+};
 
 export const fetchUpcomingLaunches = createAsyncThunk(
-    'upcoming/fetchList',
-    async () => {
-      const api = new UpcomingApi()
-      const response = await api.getUpcomingLaunches('launch/upcoming/')
-  
-      return response.data
-    }
-  )
+  'upcoming/fetchList',
+  async () => {
+    const api = new UpcomingApi();
+    const response = await api.getUpcomingLaunches('launch/upcoming/');
 
-  export const upcomingSlice = createSlice({
-    name: 'upcomingList',
-    initialState,
-    reducers: {
+    return response.data;
+  }
+);
 
-    },
-    extraReducers: builder => {
-      builder.addCase(fetchUpcomingLaunches.fulfilled, (state, action) => {
-        state.upcoming.push(action.payload)
-      })
-    }
-  })
+export const upcomingSlice = createSlice({
+  name: 'upcomingList',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchUpcomingLaunches.fulfilled, (state, action) => {
+      state.upcoming.push(action.payload);
+    });
+  },
+});
 
-  export const selectUpcoming = (state: RootState) => state.upcoming
+export const selectUpcoming = (state: RootState) => state.upcoming;
 
-  export default upcomingSlice.reducer
+export default upcomingSlice.reducer;

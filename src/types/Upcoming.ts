@@ -1,7 +1,6 @@
-
-import { Launch } from './Launch'
+import { Launch } from './Launch';
 
 export interface Upcoming {
-    count: number,
-    results: Launch[]
+  count: number;
+  results: Launch[];
 }
