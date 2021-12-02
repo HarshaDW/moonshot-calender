@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import upcomingReducer from './upcoming/upcomingSlice';
+import searchReducer from './searchByDate/searchSlice';
 
 export const store = configureStore({
   reducer: {
     upcoming: upcomingReducer,
+    search: searchReducer,
   },
 });
 

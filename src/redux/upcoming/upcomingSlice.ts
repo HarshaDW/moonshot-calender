@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UpcomingApi } from '../../api/UpcomingAPI';
+import { ApiInstance } from '../../api/ApiInstance';
 import { RootState } from '../store';
 import { Upcoming } from '../../types/Upcoming';
 
@@ -14,7 +14,7 @@ const initialState: UpcomingState = {
 export const fetchUpcomingLaunches = createAsyncThunk(
   'upcoming/fetchList',
   async () => {
-    const api = new UpcomingApi();
+    const api = new ApiInstance();
     const response = await api.getUpcomingLaunches('launch/upcoming/');
 
     return response.data;

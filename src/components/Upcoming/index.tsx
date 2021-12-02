@@ -2,12 +2,11 @@ import { useState } from 'react';
 
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import { useAppSelector } from '../../redux/hooks';
 import { selectUpcoming } from '../../redux/upcoming/upcomingSlice';
 import ReactMapGL from 'react-map-gl';
 
-const Upcoming = props => {
+const Upcoming = (props) => {
   const [viewport, setViewport] = useState({
     width: 400,
     height: 400,
@@ -31,7 +30,7 @@ const Upcoming = props => {
       <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
         <ReactMapGL
           {...viewport}
-          onViewportChange={nextViewport => setViewport(nextViewport)}
+          onViewportChange={(nextViewport) => setViewport(nextViewport)}
         />
       </Stack>
     </>

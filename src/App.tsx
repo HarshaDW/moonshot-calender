@@ -3,7 +3,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Header from './components/common/Header';
 import Layout from './components/common/Layout';
-import Upcoming from './components/Upcoming/';
 import theme from './theme';
 import { useAppDispatch } from './redux/hooks';
 import { fetchUpcomingLaunches } from './redux/upcoming/upcomingSlice';

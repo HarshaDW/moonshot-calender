@@ -7,14 +7,14 @@ const routes: IRoute[] = [
     path: '/',
     name: 'Upcoming',
     component: Upcoming,
-    exact: true
+    exact: true,
   },
   {
     path: '/search',
     name: 'Search Page',
     component: SearchByDate,
-    exact: true
+    exact: true,
   },
-]
+];
 
-export default routes
+export default routes;

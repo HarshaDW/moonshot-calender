@@ -1,0 +1,14 @@
+{
+    "baseUrl": "http://localhost:3000",
+    "fixturesFolder": "_tests_/cypress/fixtures",
+    "integrationFolder": "_tests_/cypress/integration",
+    "pluginsFile": "_tests_/cypress/plugins/index.js",
+    "screenshotsFolder": "_tests_/cypress/screenshots",
+    "videosFolder": "_tests_/cypress/videos",
+    "downloadsFolder": "_tests_/cypress/downloads",
+    "supportFile": "_tests_/cypress/support/index.js",
+    "pageLoadTimeout": 1000,
+    "defaultCommandTimeout": 1000,
+    "ignoreTestFiles": "**/ignoredTestFiles/*.js"
+  }
+  
