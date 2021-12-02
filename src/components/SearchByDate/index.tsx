@@ -7,7 +7,7 @@ import { useAppSelector } from '../../redux/hooks';
 import { selectUpcoming } from '../../redux/upcoming/upcomingSlice';
 import ReactMapGL from 'react-map-gl';
 
-const Upcoming = props => {
+const SearchByDate = props => {
   const [viewport, setViewport] = useState({
     width: 400,
     height: 400,
@@ -26,7 +26,7 @@ const Upcoming = props => {
         color="text.primary"
         gutterBottom
       >
-        Upcoming Launches
+        Search by Date
       </Typography>
       <Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center">
         <ReactMapGL
@@ -38,4 +38,4 @@ const Upcoming = props => {
   );
 };
 
-export default Upcoming;
+export default SearchByDate;

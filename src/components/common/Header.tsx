@@ -4,8 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-
-const pages = ['Products', 'Pricing', 'Blog'];
+import { Link as RouterLink } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -21,11 +20,20 @@ const Header = () => {
           QUIN
         </Typography>
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}>
-          {pages.map((page) => (
-            <Button key={page} sx={{ my: 2, color: 'white', display: 'block' }}>
-              {page}
-            </Button>
-          ))}
+          <Button
+            component={RouterLink}
+            to="/"
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+            Upcoming
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/search"
+            sx={{ my: 2, color: 'white', display: 'block' }}
+          >
+            Search By Date
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>
